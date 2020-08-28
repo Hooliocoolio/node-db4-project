@@ -1,6 +1,6 @@
 const express = require("express");
 
-const recipeRouter = require("./recipes/recipes-router");
+const recipeRouter = require("./cookbook/recipeRouter");
 
 const server = express();
 server.use(express.json());
