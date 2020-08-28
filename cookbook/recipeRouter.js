@@ -63,4 +63,18 @@ router.get('/ri/:id', (req, res) => {
         })
     })
 
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+router.get('/recipe/:id/steps', async (req, res, next) => {
+    try {
+        const steps = await recipes.getRecipeSteps(req.params.id)
+        res.json(steps)
+    } catch (err) {
+        next(err)
+    }
+})
+
+
+
 module.exports = router;

@@ -4,7 +4,8 @@ module.exports = {
     getRecipes,
     getIngredients,
     getSteps,
-    getRI
+    getRI,
+    getRecipeSteps
 }
 
 function getRecipes(){
@@ -23,6 +24,14 @@ function getRI(recipe_id) {
     return database('recipe_ingredients')
     .select("*")
     .where({ recipe_id })
+}
+
+function getRecipeSteps(recipe_id) {
+    return database('recipe_steps as rs')
+        .join('steps as s', 's.id', 'rs.step_id')
+        .join('recipes as r', 'r.id', 'rs.recipe_id')
+        .where({ recipe_id })
+    
 }
 
 // function getIngredients(recipe_id) {
